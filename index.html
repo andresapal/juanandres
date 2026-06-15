@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Andrés Aparicio · Mediocampista ofensivo / Extremo</title>
+<meta name="description" content="Juan Andrés Aparicio Giraldo — mediocampista ofensivo y extremo. Bogotá, Colombia (2010). En busca de una beca deportiva para jugar en el exterior.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --bg:#0a0a0d;
+  --bg-2:#0f1016;
+  --surface:#14151d;
+  --surface-2:#1b1d27;
+  --text:#f4efe6;
+  --muted:#9b9ba6;
+  --garnet:#c1112f;
+  --garnet-bright:#e6173a;
+  --garnet-deep:#7a0c1f;
+  --blue:#2a5fae;
+  --gold:#d8b25a;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.06);
+  --maxw:1240px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* Atmospheric background */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 80% 0%, rgba(193,17,47,.20), transparent 60%),
+    radial-gradient(50% 45% at 5% 30%, rgba(42,95,174,.16), transparent 55%),
+    radial-gradient(45% 40% at 90% 95%, rgba(216,178,90,.08), transparent 60%),
+    var(--bg);
+}
+body::after{ /* grain */
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* Typography helpers */
+.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.9}
+.eyebrow{font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:1.05rem;color:var(--garnet-bright);text-transform:uppercase}
+.section-head{margin-bottom:54px;max-width:760px}
+.section-head .eyebrow{display:inline-flex;align-items:center;gap:12px}
+.section-head .eyebrow::before{content:"";width:34px;height:2px;background:var(--garnet)}
+.section-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.3rem,6vw,4.6rem);line-height:.92;margin-top:14px;letter-spacing:.005em}
+.section-title em{font-style:normal;color:transparent;-webkit-text-stroke:1.4px var(--garnet)}
+/* visos iluminados (glow) en titulos Anton — sin cambiar diseno ni color */
+.section-title,.contact h2{text-shadow:0 0 22px rgba(244,239,230,.10)}
+.section-title em{filter:drop-shadow(0 0 7px rgba(230,23,58,.55)) drop-shadow(0 0 20px rgba(193,17,47,.30));animation:titleGlow 4s ease-in-out infinite}
+@keyframes titleGlow{0%,100%{filter:drop-shadow(0 0 5px rgba(230,23,58,.40)) drop-shadow(0 0 14px rgba(193,17,47,.22))}50%{filter:drop-shadow(0 0 11px rgba(230,23,58,.85)) drop-shadow(0 0 30px rgba(193,17,47,.52))}}
+.hero h1 .l2{filter:drop-shadow(0 0 16px rgba(244,239,230,.22))}
+@media (prefers-reduced-motion:reduce){.section-title em{animation:none}}
+
+/* ---------- NAV ---------- */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--garnet),var(--gold));z-index:120}
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;transition:background .4s var(--ease),padding .4s var(--ease),border-color .4s;
+  border-bottom:1px solid transparent;
+}
+header.nav.scrolled{background:rgba(10,10,13,.78);backdrop-filter:blur(14px);padding:12px 28px;border-bottom:1px solid var(--line)}
+.brand{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.15rem;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.brand .dot{width:10px;height:10px;background:var(--garnet);border-radius:50%;box-shadow:0 0 14px var(--garnet-bright)}
+.brand b{color:var(--garnet-bright);font-weight:400}
+nav.links{display:flex;align-items:center;gap:30px}
+nav.links a{font-size:.83rem;font-weight:600;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;transition:color .25s;position:relative}
+nav.links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--garnet);transition:width .3s var(--ease)}
+nav.links a:hover{color:var(--text)}
+nav.links a:hover::after{width:100%}
+.lang{display:flex;align-items:center;border:1px solid var(--line);border-radius:40px;overflow:hidden;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em}
+.lang button{background:none;border:none;color:var(--muted);padding:7px 14px;cursor:pointer;font:inherit;font-size:1rem;transition:.25s}
+.lang button.active{background:var(--garnet);color:#fff}
+.nav-right{display:flex;align-items:center;gap:18px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:var(--text);transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;width:100%}
+.hero-watermark{
+  position:absolute;right:-3vw;top:48%;transform:translateY(-50%);
+  font-family:'Anton',sans-serif;font-size:46vw;line-height:1;color:#fff;opacity:.025;
+  pointer-events:none;z-index:0;user-select:none;
+}
+.hero-left{position:relative;z-index:2}
+.avail{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:40px;padding:7px 15px;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.avail .pulse{width:8px;height:8px;border-radius:50%;background:#43d17a;box-shadow:0 0 0 0 rgba(67,209,122,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(67,209,122,.55)}70%{box-shadow:0 0 0 10px rgba(67,209,122,0)}100%{box-shadow:0 0 0 0 rgba(67,209,122,0)}}
+.hero h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.7rem,8vw,7rem);line-height:1.06;letter-spacing:.035em}
+.hero h1 .l2{color:transparent;-webkit-text-stroke:2px var(--text);position:relative}
+.hero .tagline{font-size:clamp(1.05rem,2vw,1.4rem);color:var(--text);margin:24px 0 8px;max-width:30ch;font-weight:500}
+.hero .meta{font-family:'Bebas Neue',sans-serif;letter-spacing:.18em;color:var(--muted);font-size:1.15rem;margin-top:14px}
+.hero .cta{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:40px;font-weight:700;font-size:.9rem;letter-spacing:.03em;cursor:pointer;border:1px solid transparent;transition:.3s var(--ease)}
+.btn-primary{background:var(--garnet);color:#fff;box-shadow:0 10px 30px -10px var(--garnet)}
+.btn-primary:hover{background:var(--garnet-bright);transform:translateY(-3px);box-shadow:0 16px 36px -12px var(--garnet-bright)}
+.btn-ghost{border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--text);background:rgba(255,255,255,.04);transform:translateY(-3px)}
+.btn .arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translate(4px,-4px)}
+.hero-side{position:absolute;left:-46px;top:50%;transform:rotate(-90deg);transform-origin:left center;font-family:'Bebas Neue',sans-serif;letter-spacing:.4em;font-size:.9rem;color:var(--muted);z-index:3}
+
+.hero-portrait{position:relative;z-index:2;justify-self:center}
+.hero-portrait .frame{
+  position:relative;width:min(440px,82vw);aspect-ratio:3/4;border-radius:6px;overflow:hidden;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.85);
+}
+.hero-portrait .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,13,.55));mix-blend-mode:multiply}
+.hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-portrait .badge-num{
+  position:absolute;left:-26px;bottom:30px;font-family:'Anton',sans-serif;font-size:7rem;line-height:.8;color:var(--text);
+  text-shadow:0 6px 30px rgba(0,0,0,.6);z-index:3;
+}
+.hero-portrait .badge-num span{display:block;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.2em;color:var(--garnet-bright);margin-top:6px}
+.hero-portrait .ring{position:absolute;inset:-16px;border:1px solid var(--line);border-radius:10px;z-index:-1}
+
+/* ---------- STATS ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.012)}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:46px 28px;text-align:center;border-right:1px solid var(--line-2);position:relative}
+.stat:last-child{border-right:none}
+.stat .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5.4rem);line-height:.9;color:var(--text);letter-spacing:.02em}
+.stat .num .suffix{color:var(--garnet-bright)}
+.stat .label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:600}
+
+/* ---------- STORY ---------- */
+.story{padding:120px 0}
+.story .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+.story-img{position:relative}
+.story-img .frame{border-radius:6px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img .tag{position:absolute;left:-14px;bottom:34px;background:var(--garnet);padding:14px 22px;border-radius:4px;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.1rem;box-shadow:0 14px 30px -12px var(--garnet)}
+.story p{color:var(--muted);margin-bottom:18px}
+.story p strong{color:var(--text);font-weight:700}
+.quote{border-left:3px solid var(--garnet);padding:6px 0 6px 24px;margin:30px 0;font-size:1.3rem;line-height:1.45;color:var(--text);font-weight:600;font-style:italic}
+
+/* ---------- FICHA ---------- */
+.ficha{padding:0 0 120px}
+.ficha .panel{background:linear-gradient(160deg,var(--surface),var(--bg-2));border:1px solid var(--line);border-radius:12px;padding:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:30px 50px}
+.ficha .row{border-bottom:1px solid var(--line-2);padding-bottom:18px}
+.ficha .row .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;color:var(--garnet-bright);font-size:.95rem;text-transform:uppercase}
+.ficha .row .v{font-size:1.12rem;font-weight:600;margin-top:4px}
+
+/* ---------- JOURNEY ---------- */
+.journey{padding:120px 0;background:rgba(255,255,255,.012);border-top:1px solid var(--line)}
+.timeline{display:flex;gap:0;overflow-x:auto;padding:20px 0 30px;scroll-snap-type:x mandatory}
+.timeline::-webkit-scrollbar{height:6px}
+.timeline::-webkit-scrollbar-thumb{background:var(--garnet-deep);border-radius:10px}
+.tl-item{min-width:280px;flex:1;scroll-snap-align:start;padding:0 26px;position:relative}
+.tl-item::before{content:"";position:absolute;left:0;top:14px;right:0;height:2px;background:var(--line)}
+.tl-item .dot{width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--garnet);position:relative;z-index:2;margin-bottom:26px;transition:.3s}
+.tl-item:hover .dot{background:var(--garnet);box-shadow:0 0 16px var(--garnet-bright)}
+.tl-item .yr{font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;color:var(--gold);font-size:1.05rem}
+.tl-item h4{font-family:'Manrope',sans-serif;font-weight:700;text-transform:uppercase;font-size:1.3rem;margin:6px 0 10px;letter-spacing:.02em}
+.tl-item p{color:var(--muted);font-size:.95rem}
+
+/* ---------- HIGHLIGHTS ---------- */
+.highlights{padding:120px 0}
+.hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.hl-card{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;border:1px solid var(--line);background:var(--surface)}
+.hl-card:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.hl-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transition:.6s var(--ease)}
+.hl-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,13,.15),rgba(10,10,13,.88))}
+.hl-card:hover img{opacity:.72;transform:scale(1.06)}
+.hl-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:26px}
+.hl-body .play{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:auto;transition:.3s}
+.hl-card:hover .play{background:var(--garnet);border-color:var(--garnet)}
+.hl-body .play svg{width:18px;height:18px;margin-left:3px}
+.hl-body h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.9rem;letter-spacing:.01em}
+.hl-body p{color:var(--muted);font-size:.9rem;margin-top:4px}
+.hl-body .soon{position:absolute;top:22px;right:22px;background:rgba(0,0,0,.5);border:1px solid var(--line);padding:5px 12px;border-radius:30px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+
+/* ---------- GALLERY ---------- */
+.gallery{padding:120px 0;background:rgba(255,255,255,.012);border-top:1px solid var(--line)}
+.tabs{display:flex;gap:10px;margin-bottom:36px}
+.tab{font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.15rem;padding:9px 24px;border-radius:40px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;transition:.25s}
+.tab.active{background:var(--garnet);color:#fff;border-color:var(--garnet)}
+.masonry{columns:4;column-gap:14px}
+.masonry figure{break-inside:avoid;margin:0 0 14px;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;background:var(--surface)}
+.masonry img{width:100%;transition:.5s var(--ease);filter:saturate(.96)}
+.masonry figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(193,17,47,.0));transition:.3s}
+.masonry figure:hover img{transform:scale(1.05);filter:saturate(1.1)}
+.masonry figure:hover::after{background:linear-gradient(180deg,transparent 50%,rgba(193,17,47,.35))}
+.videos-soon{text-align:center;padding:90px 20px;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+.videos-soon .big{font-family:'Anton',sans-serif;font-size:2rem;color:var(--text);text-transform:uppercase;margin-bottom:10px}
+/* ---------- RECUERDOS (video) ---------- */
+.recuerdos{padding:120px 0}
+.video-frame{position:relative;width:100%;max-width:1000px;margin:0 auto;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px -30px rgba(0,0,0,.85);background:#000}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ---------- CONTACT ---------- */
+.contact{padding:130px 0}
+.contact .box{background:radial-gradient(280px 280px at 100% -8%, rgba(216,178,90,.20), transparent 70%),linear-gradient(150deg,var(--garnet-deep),var(--bg-2) 70%);border:1px solid var(--line);border-radius:16px;padding:70px 60px;position:relative}
+.contact .box::before{content:none}
+.contact h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.2rem,5.5vw,4rem);line-height:.95;max-width:16ch}
+.contact p.sub{color:var(--text);opacity:.85;margin:20px 0 36px;max-width:46ch;font-size:1.1rem}
+.contact .methods{display:flex;gap:16px;flex-wrap:wrap}
+.socials{display:flex;gap:14px;margin-top:40px}
+.socials a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.3s;background:rgba(0,0,0,.2)}
+.socials a:hover{background:var(--garnet);border-color:var(--garnet);transform:translateY(-4px)}
+.socials svg{width:20px;height:20px}
+.contact .emails{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px}
+.contact .emails a{color:var(--text);opacity:.82;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:2px;transition:.25s;word-break:break-all}
+.contact .emails a:hover{opacity:1;border-color:var(--garnet-bright)}
+.socials a.soon-ig{opacity:.4;cursor:default}
+.socials a.soon-ig:hover{background:rgba(0,0,0,.2);border-color:var(--line);transform:none}
+.wa svg{margin-right:2px;vertical-align:-3px}
+.wa-wrap{position:relative;display:inline-block}
+#wa-toggle{display:inline-flex;align-items:center;gap:8px}
+#wa-toggle .caret{font-size:.7em;transition:transform .3s var(--ease)}
+#wa-toggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.wa-menu{position:absolute;top:calc(100% + 12px);left:0;min-width:240px;max-width:84vw;background:rgba(18,19,27,.97);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:0 26px 60px -20px rgba(0,0,0,.85);opacity:0;transform:translateY(-10px);filter:blur(6px);pointer-events:none;transition:opacity .45s var(--ease),transform .45s var(--ease),filter .45s var(--ease);z-index:40}
+.wa-menu.open{opacity:1;transform:none;filter:blur(0);pointer-events:auto}
+.wa-menu-label{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 10px 10px;font-weight:700}
+.wa-opt{display:flex;align-items:center;gap:11px;padding:12px;border-radius:10px;color:var(--text);font-weight:600;transition:background .2s,transform .2s}
+.wa-opt:hover{background:rgba(37,211,102,.16);transform:translateX(3px)}
+.wa-opt svg{width:20px;height:20px;flex:none;margin:0;vertical-align:0}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:48px 0 40px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+footer .brand{font-size:1.4rem}
+footer .small{color:var(--muted);font-size:.82rem}
+
+/* ---------- LIGHTBOX ---------- */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(6,6,9,.95);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:86vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.lb .x,.lb .nav-btn{position:absolute;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:1.4rem;display:flex;align-items:center;justify-content:center;transition:.25s}
+.lb .x:hover,.lb .nav-btn:hover{background:var(--garnet)}
+.lb .x{top:26px;right:26px}
+.lb .prev{left:26px;top:50%;transform:translateY(-50%)}
+.lb .next{right:26px;top:50%;transform:translateY(-50%)}
+
+/* toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--surface-2);border:1px solid var(--line);padding:14px 24px;border-radius:40px;z-index:210;transition:.4s var(--ease);font-weight:600;font-size:.9rem}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* reveal — animaciones suaves estilo Apple (fade-in + leve desplazamiento + desenfoque progresivo) */
+[data-reveal]{opacity:0;transform:translateY(28px);filter:blur(8px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease),filter 1.2s var(--ease);transition-delay:var(--d,0s)}
+[data-reveal].in{opacity:1;transform:none;filter:blur(0)}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1;transform:none;filter:none;transition:none}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:50px}
+  .hero-portrait{order:-1}
+  .story .grid{grid-template-columns:1fr;gap:40px}
+  .ficha .panel{grid-template-columns:1fr}
+  .hl-grid{grid-template-columns:1fr 1fr}
+  .hl-card:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/9}
+  .masonry{columns:3}
+  .hero-side{display:none}
+}
+@media(max-width:680px){
+  body{font-size:16px}
+  nav.links{position:fixed;inset:0 0 0 30%;background:rgba(12,13,19,.98);backdrop-filter:blur(16px);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:.45s var(--ease);border-left:1px solid var(--line)}
+  nav.links.open{transform:none}
+  nav.links a{font-size:1.1rem}
+  .burger{display:flex}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .stats .grid{grid-template-columns:1fr 1fr}
+  .stat{border-bottom:1px solid var(--line-2)}
+  .hl-grid{grid-template-columns:1fr}
+  .hl-card:first-child{grid-column:auto}
+  .masonry{columns:2}
+  .contact .box{padding:44px 26px}
+  .wrap{padding:0 20px}
+  header.nav{padding:14px 20px}
+  .hero-portrait .badge-num{left:-8px;font-size:5rem}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="#inicio" class="brand"><span class="dot"></span>JUAN ANDRÉS <b>APARICIO</b></a>
+  <div class="nav-right">
+    <nav class="links" id="navlinks">
+      <a href="#historia" data-es="Historia" data-en="Story">Historia</a>
+      <a href="#trayectoria" data-es="Trayectoria" data-en="Career">Trayectoria</a>
+      <a href="#highlights" data-es="Highlights" data-en="Highlights">Highlights</a>
+      <a href="#galeria" data-es="Galería" data-en="Gallery">Galería</a>
+      <a href="#recuerdos" data-es="Recuerdos" data-en="Memories">Recuerdos</a>
+      <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+    </nav>
+    <div class="lang">
+      <button data-lang="es" class="active">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div class="hero-watermark">11</div>
+  <div class="hero-side">BOGOTÁ · COLOMBIA</div>
+  <div class="wrap">
+    <div class="hero-left">
+      <div class="avail" data-reveal><span class="pulse"></span><span data-es="Disponible para pruebas y becas · 2026" data-en="Open to trials &amp; scholarships · 2026">Disponible para pruebas y becas · 2026</span></div>
+      <div class="eyebrow" data-reveal data-es="Mediocampista ofensivo · Extremo" data-en="Attacking Midfielder · Winger">Mediocampista ofensivo · Extremo</div>
+      <h1 data-reveal>JUAN ANDRÉS<br><span class="l2">APARICIO</span></h1>
+      <p class="tagline" data-reveal data-es="Lee el juego antes de que suceda. Visión, técnica y carácter por las dos bandas." data-en="Reads the game before it happens. Vision, technique and character on both flanks.">Lee el juego antes de que suceda. Visión, técnica y carácter por las dos bandas.</p>
+      <div class="meta" data-reveal>BOGOTÁ, COLOMBIA · 10.02.2010</div>
+      <div class="cta" data-reveal>
+        <a href="#highlights" class="btn btn-primary"><span data-es="Ver highlights" data-en="Watch highlights">Ver highlights</span> <span class="arrow">↗</span></a>
+        <a href="#contacto" class="btn btn-ghost"><span data-es="Contactar" data-en="Get in touch">Contactar</span></a>
+      </div>
+    </div>
+    <div class="hero-portrait" data-reveal>
+      <div class="ring"></div>
+      <div class="frame">
+        <img src="img/fotos/img_3566.webp" alt="Juan Andrés Aparicio">
+      </div>
+      <div class="badge-num">11<span data-es="El '11'" data-en="The No.11">El '11'</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="grid">
+    <div class="stat" data-reveal><div class="num" data-count="16">0</div><div class="label" data-es="Años" data-en="Years old">Años</div></div>
+    <div class="stat" data-reveal><div class="num" data-count="12">0</div><div class="label" data-es="Temporadas jugando" data-en="Seasons playing">Temporadas jugando</div></div>
+    <div class="stat" data-reveal><div class="num" data-count="5">0</div><div class="label" data-es="Escuelas de formación" data-en="Football academies">Escuelas de formación</div></div>
+    <div class="stat" data-reveal><div class="num" data-count="1">0</div><div class="label" data-es="Meta: jugar afuera" data-en="Goal: play abroad">Meta: jugar afuera</div></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="historia" class="story">
+  <div class="wrap grid">
+    <div class="story-img" data-reveal>
+      <div class="frame"><img src="img/fotos/trofeo-gimnasio.webp" alt="Juan Andrés en el campo"></div>
+      <div class="tag" data-es="Desde los 4 años" data-en="Since age 4">Desde los 4 años</div>
+    </div>
+    <div class="story-text">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-es="Su historia" data-en="His story">Su historia</span>
+        <h2 class="section-title" data-es="Nacido para <em>jugar</em>" data-en="Born to <em>play</em>">Nacido para <em>jugar</em></h2>
+      </div>
+      <p data-reveal data-es="Juan Andrés nació el 10 de febrero de 2010 en Bogotá, Colombia. Su pasión por el fútbol nació con el <strong>Mundial de 2014</strong>: siendo apenas un niño, veía cada partido los 90 minutos completos y se aprendía las banderas de todos los países. A los 4 años se calzó sus primeros guayos y no paró más." data-en="Juan Andrés was born on February 10, 2010, in Bogotá, Colombia. His passion for football was born with the <strong>2014 World Cup</strong>: just a child, he watched every match for the full 90 minutes and learned the flags of every country. At 4 he laced up his first boots and never looked back.">Juan Andrés nació el 10 de febrero de 2010 en Bogotá, Colombia. Su pasión por el fútbol nació con el <strong>Mundial de 2014</strong>: siendo apenas un niño, veía cada partido los 90 minutos completos y se aprendía las banderas de todos los países. A los 4 años se calzó sus primeros guayos y no paró más.</p>
+      <blockquote class="quote" data-reveal data-es="“Siempre buscando ir un paso adelante, leyendo las jugadas antes de que sucedan.”" data-en="“Always a step ahead — reading the play before it happens.”">“Siempre buscando ir un paso adelante, leyendo las jugadas antes de que sucedan.”</blockquote>
+      <p data-reveal data-es="Se ha formado en escuelas reconocidas —<strong>Los Andes, Independiente Santa Fe, Caterpillar y JDiez</strong>— y representa a su colegio, el <strong>Gimnasio Los Cerros</strong>, en múltiples torneos, dejando huella en campeonatos y subcampeonatos como figura del equipo." data-en="He has trained at respected academies —<strong>Los Andes, Independiente Santa Fe, Caterpillar and JDiez</strong>— and represents his school, <strong>Gimnasio Los Cerros</strong>, in many tournaments, leaving his mark in titles and runner-up finishes as a key figure.">Se ha formado en escuelas reconocidas —<strong>Los Andes, Independiente Santa Fe, Caterpillar y JDiez</strong>— y representa a su colegio, el <strong>Gimnasio Los Cerros</strong>, en múltiples torneos, dejando huella en campeonatos y subcampeonatos como figura del equipo.</p>
+      <p data-reveal data-es="Además de excelente estudiante, lo distingue su forma de entender el juego. Admirador del <strong>FC Barcelona</strong>, heredó el amor por el fútbol de su abuelo, ligado a Independiente Santa Fe. Hoy, próximo a culminar el colegio, su meta es clara: una <strong>beca deportiva</strong> para seguir creciendo y dar el salto al fútbol profesional e internacional." data-en="Beyond being an excellent student, what sets him apart is the way he understands the game. An admirer of <strong>FC Barcelona</strong>, he inherited his love of football from his grandfather, tied to Independiente Santa Fe. Now, about to finish school, his goal is clear: an <strong>athletic scholarship</strong> to keep growing and make the leap to professional and international football.">Además de excelente estudiante, lo distingue su forma de entender el juego. Admirador del <strong>FC Barcelona</strong>, heredó el amor por el fútbol de su abuelo, ligado a Independiente Santa Fe. Hoy, próximo a culminar el colegio, su meta es clara: una <strong>beca deportiva</strong> para seguir creciendo y dar el salto al fútbol profesional e internacional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FICHA -->
+<section class="ficha">
+  <div class="wrap">
+    <div class="panel" data-reveal>
+      <div class="row"><div class="k" data-es="Nombre completo" data-en="Full name">Nombre completo</div><div class="v">Juan Andrés Aparicio Giraldo</div></div>
+      <div class="row"><div class="k" data-es="Nacimiento" data-en="Born">Nacimiento</div><div class="v" data-es="10 de febrero de 2010 · Bogotá, Colombia" data-en="February 10, 2010 · Bogotá, Colombia">10 de febrero de 2010 · Bogotá, Colombia</div></div>
+      <div class="row"><div class="k" data-es="Posición" data-en="Position">Posición</div><div class="v" data-es="Mediocampista ofensivo · Extremo (ambas bandas)" data-en="Attacking midfielder · Winger (both flanks)">Mediocampista ofensivo · Extremo (ambas bandas)</div></div>
+      <div class="row"><div class="k" data-es="Equipo actual" data-en="Current team">Equipo actual</div><div class="v">Gimnasio Los Cerros</div></div>
+      <div class="row"><div class="k" data-es="Inspiración" data-en="Inspiration">Inspiración</div><div class="v">FC Barcelona</div></div>
+      <div class="row"><div class="k" data-es="Objetivo" data-en="Goal">Objetivo</div><div class="v" data-es="Beca deportiva en el exterior" data-en="Athletic scholarship abroad">Beca deportiva en el exterior</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="trayectoria" class="journey">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-es="Trayectoria" data-en="Career">Trayectoria</span>
+      <h2 class="section-title" data-es="Su <em>camino</em>" data-en="The <em>journey</em>">Su <em>camino</em></h2>
+    </div>
+    <div class="timeline" data-reveal>
+      <div class="tl-item"><div class="dot"></div><div class="yr" data-es="A los 4 años" data-en="Age 4">A los 4 años</div><h4 data-es="Los inicios" data-en="The start">Los inicios</h4><p data-es="Primeros guayos y escuelas de iniciación. Nace la pasión." data-en="First boots and youth academies. The passion is born.">Primeros guayos y escuelas de iniciación. Nace la pasión.</p></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">Escuela</div><h4>Los Andes</h4><p data-es="Formación técnica y primeros torneos." data-en="Technical training and first tournaments.">Formación técnica y primeros torneos.</p></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">Club</div><h4>Santa Fe</h4><p data-es="Independiente Santa Fe, el club de la familia." data-en="Independiente Santa Fe, the family club.">Independiente Santa Fe, el club de la familia.</p></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">Escuela</div><h4>Caterpillar</h4><p data-es="Más competencia y minutos de juego." data-en="More competition and game time.">Más competencia y minutos de juego.</p></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">Escuela</div><h4>JDiez</h4><p data-es="Refinando técnica y visión de juego." data-en="Refining technique and game vision.">Refinando técnica y visión de juego.</p></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr" data-es="Actualidad" data-en="Now">Actualidad</div><h4>Los Cerros</h4><p data-es="Figura del Gimnasio Los Cerros en torneos escolares." data-en="A key player for Gimnasio Los Cerros in school tournaments.">Figura del Gimnasio Los Cerros en torneos escolares.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights" class="highlights">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-es="En el campo" data-en="On the pitch">En el campo</span>
+      <h2 class="section-title" data-es="Highlights" data-en="Highlights">Highlights</h2>
+    </div>
+    <div class="hl-grid" data-reveal>
+      <div class="hl-card" data-video="goles">
+        <img src="img/fotos/img_3621.webp" alt="">
+        <div class="hl-body">
+          <span class="soon" data-es="En YouTube ↗" data-en="On YouTube ↗">En YouTube ↗</span>
+          <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+          <h3 data-es="Goles" data-en="Goals">Goles</h3>
+          <p data-es="Definición dentro y fuera del área." data-en="Finishing inside and outside the box.">Definición dentro y fuera del área.</p>
+        </div>
+      </div>
+      <div class="hl-card" data-video="asistencias">
+        <img src="img/fotos/img_20221201_145102.webp" alt="">
+        <div class="hl-body">
+          <span class="soon" data-es="En YouTube ↗" data-en="On YouTube ↗">En YouTube ↗</span>
+          <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+          <h3 data-es="Asistencias" data-en="Assists">Asistencias</h3>
+          <p data-es="Último pase y visión." data-en="Final pass and vision.">Último pase y visión.</p>
+        </div>
+      </div>
+      <div class="hl-card" data-video="cobros">
+        <img src="img/fotos/img_0996.webp" alt="">
+        <div class="hl-body">
+          <span class="soon" data-es="En YouTube ↗" data-en="On YouTube ↗">En YouTube ↗</span>
+          <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+          <h3 data-es="Cobros" data-en="Free kicks">Cobros</h3>
+          <p data-es="Tiros libres y balón parado." data-en="Free kicks and set pieces.">Tiros libres y balón parado.</p>
+        </div>
+      </div>
+      <div class="hl-card" data-video="individuales">
+        <img src="img/fotos/img_20221019_194400.webp" alt="">
+        <div class="hl-body">
+          <span class="soon" data-es="En YouTube ↗" data-en="On YouTube ↗">En YouTube ↗</span>
+          <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+          <h3 data-es="Individuales" data-en="Solo skills">Individuales</h3>
+          <p data-es="Regate y uno contra uno." data-en="Dribbling and one-on-one.">Regate y uno contra uno.</p>
+        </div>
+      </div>
+      <div class="hl-card" data-video="penaltis">
+        <img src="img/fotos/img_2215.webp" alt="">
+        <div class="hl-body">
+          <span class="soon" data-es="En YouTube ↗" data-en="On YouTube ↗">En YouTube ↗</span>
+          <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+          <h3 data-es="Penaltis" data-en="Penalties">Penaltis</h3>
+          <p data-es="Sangre fría desde los doce pasos." data-en="Ice cold from the spot.">Sangre fría desde los doce pasos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="galeria" class="gallery">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-es="Galería" data-en="Gallery">Galería</span>
+      <h2 class="section-title" data-es="Momentos" data-en="Moments">Momentos</h2>
+    </div>
+    <div class="tabs" data-reveal>
+      <button class="tab active" data-tab="fotos" data-es="Fotos" data-en="Photos">Fotos</button>
+      <button class="tab" data-tab="videos" data-es="Videos" data-en="Videos">Videos</button>
+    </div>
+    <div class="masonry" id="masonry"></div>
+    <div class="videos-soon" id="videos-pane" style="display:none" data-reveal>
+      <div class="big" data-es="Mira los videos en YouTube" data-en="Watch the videos on YouTube">Mira los videos en YouTube</div>
+      <p data-es="Estamos subiendo los mejores goles, asistencias y jugadas al canal de Juan Andrés. ¡Seguimos cargando más!" data-en="We're uploading Juan Andrés's best goals, assists and plays to his channel. More coming soon!">Estamos subiendo los mejores goles, asistencias y jugadas al canal de Juan Andrés. ¡Seguimos cargando más!</p>
+      <a href="https://www.youtube.com/@J_aparicio11" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:26px"><span data-es="Ver canal en YouTube" data-en="Open YouTube channel">Ver canal en YouTube</span> <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- RECUERDOS -->
+<section id="recuerdos" class="recuerdos">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-es="En video" data-en="On video">En video</span>
+      <h2 class="section-title" data-es="Recuerdos" data-en="Memories">Recuerdos</h2>
+    </div>
+    <div class="video-frame" data-reveal>
+      <iframe src="https://www.youtube.com/embed/P3MfgmUOweU?loop=1&amp;playlist=P3MfgmUOweU&amp;autoplay=1&amp;mute=1&amp;rel=0&amp;playsinline=1" title="Recuerdos - Juan Andrés Aparicio" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <div class="box" data-reveal>
+      <span class="eyebrow" data-es="Contacto" data-en="Contact">Contacto</span>
+      <h2 data-es="Este es mi contacto" data-en="This is my contact">Este es mi contacto</h2>
+      <p class="sub" data-es="Estoy listo para el siguiente paso." data-en="I'm ready for the next step.">Estoy listo para el siguiente paso.</p>
+      <div class="methods">
+        <a class="btn btn-primary wa" data-num="573238271138" href="https://wa.me/573238271138" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff" style="width:18px;height:18px"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm5.7 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.2-1-.4-1.7-.7-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c0 .2.1.4 0 .5l-.4.5-.3.4c-.2.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.8-.9c.2-.3.4-.2.6-.1l1.8.8c.2.1.4.2.5.3 0 .2 0 .8-.2 1.3z"/></svg> <span data-es="Mi contacto" data-en="Contact me">Mi contacto</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>JUAN ANDRÉS APARICIO</div>
+    <div class="small">© <span id="year"></span> Juan Andrés Aparicio Giraldo · Bogotá, Colombia</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="x" id="lb-close">✕</button>
+  <button class="nav-btn prev" id="lb-prev">‹</button>
+  <img src="" alt="" id="lb-img">
+  <button class="nav-btn next" id="lb-next">›</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- PHOTOS ---------- */
+const PHOTOS = [
+  "img_3566.webp","img_3621.webp","img_20211218_083055_693_6025813422517.webp","b57dab6b-f004-420c-86b6-816182c6da73.webp",
+  "trofeo-gimnasio.webp","c6d775b5-a21d-419f-8d2d-a13ef7e718f1.webp","img_3564.webp","add17e6e-7885-4455-b62f-dc50f25c9f67.webp",
+  "img_20231202_165147_513.webp","d64db61c-1a27-423c-b39d-5b7c885ff5b2.webp","img_0996.webp","img-20211206-wa0067.webp",
+  "img_1011.webp","img_20221019_194400.webp","f73d36dc-0df7-4de1-99c8-07afe4de6254.webp","img_20211217_134416.webp",
+  "10624989-1547-4068-bce2-5fa8a6f5b0b5.webp","img_0470.webp","img_2215.webp","img_20221201_145102.webp",
+  "img_1163.webp","44633133-9e6d-4cff-969a-35ba073c7e88.webp","img_20231202_165147_513-1.webp","74d99f82-af8c-4489-ba45-bcee04bf67f5.webp",
+  "468509285_10161729529465860_3013939815284668000_n.webp"
+];
+const masonry = document.getElementById('masonry');
+PHOTOS.forEach((f,i)=>{
+  const fig=document.createElement('figure');
+  fig.setAttribute('data-reveal','');
+  fig.innerHTML=`<img src="img/fotos/${f}" alt="Juan Andrés Aparicio" loading="lazy" data-i="${i}">`;
+  fig.addEventListener('click',()=>openLB(i));
+  masonry.appendChild(fig);
+});
+
+/* ---------- LIGHTBOX ---------- */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img');let cur=0;
+function openLB(i){cur=i;lbImg.src='img/fotos/'+PHOTOS[i];lb.classList.add('open')}
+function step(d){cur=(cur+d+PHOTOS.length)%PHOTOS.length;lbImg.src='img/fotos/'+PHOTOS[cur]}
+document.getElementById('lb-close').onclick=()=>lb.classList.remove('open');
+document.getElementById('lb-prev').onclick=()=>step(-1);
+document.getElementById('lb-next').onclick=()=>step(1);
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+
+/* ---------- GALLERY TABS ---------- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  const v=t.dataset.tab==='videos';
+  masonry.style.display=v?'none':'';
+  document.getElementById('videos-pane').style.display=v?'block':'none';
+});
+
+/* ---------- HIGHLIGHTS (video config — añadir IDs de YouTube luego) ---------- */
+const CHANNEL="https://www.youtube.com/@J_aparicio11";
+const VIDEOS={goles:"",asistencias:"",cobros:"",individuales:"",penaltis:""};
+document.querySelectorAll('.hl-card').forEach(c=>c.onclick=()=>{
+  const id=VIDEOS[c.dataset.video];
+  if(id){openVideo(id)}else{window.open(CHANNEL,'_blank')}
+});
+const WA_MSG={es:"Hola, vi la página de Juan Andrés Aparicio y me gustaría contactarlos sobre fútbol (pruebas / beca).",en:"Hi, I saw Juan Andrés Aparicio's page and I'd like to get in touch about football (trials / scholarship)."};
+function updateWA(){document.querySelectorAll('a.wa').forEach(a=>{a.href='https://wa.me/'+a.dataset.num+'?text='+encodeURIComponent(WA_MSG[LANG])})}
+const waToggle=document.getElementById('wa-toggle'),waMenu=document.getElementById('wa-menu');
+if(waToggle){
+  const closeWA=()=>{waMenu.classList.remove('open');waToggle.setAttribute('aria-expanded','false');waMenu.setAttribute('aria-hidden','true')};
+  waToggle.addEventListener('click',e=>{e.stopPropagation();const o=!waMenu.classList.contains('open');waMenu.classList.toggle('open',o);waToggle.setAttribute('aria-expanded',o);waMenu.setAttribute('aria-hidden',!o)});
+  document.addEventListener('click',e=>{if(waMenu.classList.contains('open')&&!waMenu.contains(e.target)&&!waToggle.contains(e.target))closeWA()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeWA()});
+  waMenu.querySelectorAll('.wa-opt').forEach(o=>o.addEventListener('click',closeWA));
+}
+function openVideo(id){
+  lbImg.style.display='none';
+  let f=document.getElementById('lb-frame');
+  if(!f){f=document.createElement('iframe');f.id='lb-frame';f.allow='autoplay; fullscreen';f.style.cssText='width:min(90vw,960px);aspect-ratio:16/9;border:0;border-radius:8px';lb.insertBefore(f,document.getElementById('lb-next'))}
+  f.src='https://www.youtube.com/embed/'+id+'?autoplay=1';f.style.display='block';lb.classList.add('open');
+}
+
+/* ---------- TOAST ---------- */
+let tT;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2600)}
+
+/* ---------- LANGUAGE ---------- */
+let LANG=localStorage.getItem('ja_lang')||'es';
+function setLang(l){
+  LANG=l;localStorage.setItem('ja_lang',l);document.documentElement.lang=l;
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.dataset[l];if(v!=null)el.innerHTML=v});
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.title=l==='es'?"Juan Andrés Aparicio · Mediocampista ofensivo / Extremo":"Juan Andrés Aparicio · Attacking Midfielder / Winger";
+  updateWA();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+
+/* ---------- NAV / SCROLL ---------- */
+const nav=document.getElementById('nav');
+const onScroll=()=>{
+  nav.classList.toggle('scrolled',scrollY>40);
+  const h=document.documentElement;
+  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+};
+addEventListener('scroll',onScroll);onScroll();
+
+/* ---------- MOBILE MENU ---------- */
+const burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
+burger.onclick=()=>{burger.classList.toggle('open');navlinks.classList.toggle('open')};
+navlinks.querySelectorAll('a').forEach(a=>a.onclick=()=>{burger.classList.remove('open');navlinks.classList.remove('open')});
+
+/* ---------- REVEAL + COUNT-UP ---------- */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.querySelectorAll){e.target.querySelectorAll('[data-count]').forEach(countUp)}io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('[data-reveal]').forEach(el=>{
+  if(!el.closest('#masonry')){const sibs=[...el.parentElement.children].filter(c=>c.hasAttribute('data-reveal'));el.style.setProperty('--d',(Math.min(sibs.indexOf(el),6)*0.09)+'s');}
+  io.observe(el);
+});
+function countUp(el){const goal=+el.dataset.count;let n=0;const dur=1100,t0=performance.now();
+  function tick(t){const p=Math.min((t-t0)/dur,1);el.textContent=Math.round((1-Math.pow(1-p,3))*goal);if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
+
+/* ---------- HERO LOAD REVEAL ---------- */
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.hero [data-reveal]').forEach((el,i)=>{el.style.transitionDelay=(i*0.09)+'s';el.classList.add('in')});
+});
+
+document.getElementById('year').textContent=new Date().getFullYear();
+setLang(LANG);
+</script>
+</body>
+</html>
