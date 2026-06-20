@@ -234,6 +234,26 @@ nav.links a:hover::after{width:100%}
 .wa-opt:hover{background:rgba(37,211,102,.16);transform:translateX(3px)}
 .wa-opt svg{width:20px;height:20px;flex:none;margin:0;vertical-align:0}
 
+/* ---------- CONTACT MODAL ---------- */
+.ja-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.ja-overlay.show{display:flex}
+.ja-modal{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;max-width:420px;width:100%;padding:32px 28px;box-shadow:0 30px 80px rgba(0,0,0,.6);font-family:'Manrope',sans-serif;animation:japop .3s var(--ease)}
+@keyframes japop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.ja-modal h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.5rem;line-height:1.1;color:var(--text);margin:0 0 4px}
+.ja-modal .ja-sub{font-size:.88rem;color:var(--muted);margin:0 0 20px}
+.ja-field{margin-bottom:12px}
+.ja-field label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;color:var(--muted)}
+.ja-field input{width:100%;height:46px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--text);font-size:.95rem;font-family:'Manrope',sans-serif;transition:border-color .25s,box-shadow .25s;outline:none}
+.ja-field input:focus{border-color:var(--garnet);box-shadow:0 0 0 3px rgba(193,17,47,.18)}
+.ja-field input::placeholder{color:var(--muted);opacity:.5}
+.ja-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ja-err{color:#ef4444;font-size:.78rem;margin:2px 0 0;display:none}
+.ja-go{width:100%;height:50px;margin-top:14px;background:var(--garnet);color:#fff;border:none;border-radius:60px;font-size:1rem;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .25s,transform .2s,box-shadow .25s}
+.ja-go:hover{background:var(--garnet-bright);transform:translateY(-2px);box-shadow:0 8px 30px rgba(193,17,47,.35)}
+.ja-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;color:var(--muted);cursor:pointer;line-height:1;transition:color .2s}
+.ja-close:hover{color:var(--text)}
+@media(max-width:480px){.ja-row{grid-template-columns:1fr}.ja-modal{padding:24px 20px}}
+
 /* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--line);padding:48px 0 40px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
@@ -524,6 +544,29 @@ footer .small{color:var(--muted);font-size:.82rem}
 </div>
 <div class="toast" id="toast"></div>
 
+<!-- CONTACT MODAL -->
+<div class="ja-overlay" id="jaOverlay" role="dialog" aria-modal="true">
+  <div class="ja-modal">
+    <button class="ja-close" id="jaClose" aria-label="Cerrar">&times;</button>
+    <h3 data-es="Un paso antes ⚽" data-en="One step first ⚽">Un paso antes ⚽</h3>
+    <p class="ja-sub" data-es="Déjanos tus datos y te contactamos al instante." data-en="Leave your details and we'll contact you right away.">Déjanos tus datos y te contactamos al instante.</p>
+    <div class="ja-row">
+      <div class="ja-field"><label data-es="Nombre *" data-en="First name *">Nombre *</label><input id="jaNom" type="text" autocomplete="given-name"></div>
+      <div class="ja-field"><label data-es="Apellido *" data-en="Last name *">Apellido *</label><input id="jaApe" type="text" autocomplete="family-name"></div>
+    </div>
+    <div class="ja-row">
+      <div class="ja-field"><label data-es="País *" data-en="Country *">País *</label><input id="jaPais" type="text"></div>
+      <div class="ja-field"><label data-es="Ciudad *" data-en="City *">Ciudad *</label><input id="jaLugar" type="text"></div>
+    </div>
+    <div class="ja-field"><label data-es="Tu correo o WhatsApp *" data-en="Your email or WhatsApp *">Tu correo o WhatsApp *</label><input id="jaContacto" type="text"></div>
+    <p class="ja-err" id="jaErr" data-es="Completa todos los campos." data-en="Please fill in all fields.">Completa todos los campos.</p>
+    <button class="ja-go" id="jaGo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm5.7 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.2-1-.4-1.7-.7-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c0 .2.1.4 0 .5l-.4.5-.3.4c-.2.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.8-.9c.2-.3.4-.2.6-.1l1.8.8c.2.1.4.2.5.3 0 .2 0 .8-.2 1.3z"/></svg>
+      <span data-es="Continuar a WhatsApp" data-en="Continue to WhatsApp">Continuar a WhatsApp</span>
+    </button>
+  </div>
+</div>
+
 <script>
 /* ---------- PHOTOS ---------- */
 const PHOTOS = [
@@ -597,7 +640,7 @@ function setLang(l){
   document.querySelectorAll('[data-es]').forEach(el=>{const v=el.dataset[l];if(v!=null)el.innerHTML=v});
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   document.title=l==='es'?"Juan Andrés Aparicio · Mediocampista ofensivo / Extremo":"Juan Andrés Aparicio · Attacking Midfielder / Winger";
-  updateWA();
+  updateWA();if(typeof updateJAPlaceholders==='function')updateJAPlaceholders();
 }
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 
@@ -628,6 +671,46 @@ function countUp(el){const goal=+el.dataset.count;let n=0;const dur=1100,t0=perf
 window.addEventListener('load',()=>{
   document.querySelectorAll('.hero [data-reveal]').forEach((el,i)=>{el.style.transitionDelay=(i*0.09)+'s';el.classList.add('in')});
 });
+
+/* ---------- CONTACT MODAL ---------- */
+(function(){
+  var TG_TOKEN='8850536310:AAEvo9Qizzh3FbM5tHhbpQVL5llejkFOZ54';
+  var TG_CHAT='1081707115';
+  var W3KEY='4955ca45-48c4-4ef2-9c0b-da17741a1d2c';
+  var overlay=document.getElementById('jaOverlay');
+  var elN=document.getElementById('jaNom'),elA=document.getElementById('jaApe');
+  var elP=document.getElementById('jaPais'),elL=document.getElementById('jaLugar');
+  var elC=document.getElementById('jaContacto'),elErr=document.getElementById('jaErr');
+  var pendingHref=null;
+  var jaPH={jaNom:{es:'Ej: Juan',en:'e.g. Juan'},jaApe:{es:'Ej: Aparicio',en:'e.g. Aparicio'},jaPais:{es:'Ej: Colombia',en:'e.g. Colombia'},jaLugar:{es:'Ej: Bogotá',en:'e.g. Bogotá'},jaContacto:{es:'correo@mail.com o +57 300...',en:'email@mail.com or +57 300...'}};
+  window.updateJAPlaceholders=function(){Object.entries(jaPH).forEach(function(e){var el=document.getElementById(e[0]);if(el)el.placeholder=e[1][LANG]||e[1].es})};
+  window.updateJAPlaceholders();
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="wa.me"]');
+    if(!a)return;
+    e.preventDefault();
+    pendingHref=a.href;
+    overlay.classList.add('show');elErr.style.display='none';setTimeout(function(){elN.focus()},50);
+  },true);
+  function closeModal(){overlay.classList.remove('show')}
+  document.getElementById('jaClose').onclick=closeModal;
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal()});
+  [elN,elA,elP,elL,elC].forEach(function(el){el.addEventListener('keydown',function(ev){if(ev.key==='Enter')enviar()})});
+  document.getElementById('jaGo').onclick=enviar;
+  function val(el){return(el&&el.value?el.value.trim():'')}
+  function enviar(){
+    var n=val(elN),a=val(elA),p=val(elP),l=val(elL),c=val(elC);
+    if(!n||!a||!p||!l||!c){elErr.style.display='block';return}
+    var cuando=new Date().toLocaleString('es-CO',{timeZone:'America/Bogota'});
+    var texto='⚽ JUAN ANDRÉS APARICIO — Nuevo contacto\n👤 '+n+' '+a+'\n🌍 País: '+p+'\n📍 Lugar: '+l+'\n📧 Contacto: '+c+'\n🕑 '+cuando;
+    if(TG_TOKEN&&TG_CHAT){fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage?chat_id='+encodeURIComponent(TG_CHAT)+'&text='+encodeURIComponent(texto),{method:'GET',keepalive:true}).catch(function(){})}
+    if(W3KEY){fetch('https://api.web3forms.com/submit',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:W3KEY,subject:'⚽ Nuevo contacto web: '+n+' '+a+' ('+p+')',from_name:'Página Juan Andrés Aparicio',cc:'dgiraldos24@gmail.com',Nombre:n,Apellido:a,'País':p,'Ciudad':l,Contacto:c,message:texto})}).catch(function(){})}
+    var waUrl=pendingHref||'https://wa.me/573238271138';
+    try{var u=new URL(waUrl);var base=u.searchParams.get('text')||'';u.searchParams.set('text','Hola, soy '+n+' '+a+' de '+p+'. '+base);waUrl=u.toString()}catch(_){}
+    closeModal();elN.value='';elA.value='';elP.value='';elL.value='';elC.value='';
+    window.open(waUrl,'_blank');
+  }
+})();
 
 document.getElementById('year').textContent=new Date().getFullYear();
 setLang(LANG);
